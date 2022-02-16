@@ -8,7 +8,6 @@ using std::string;
 using std::endl;
 
 const int n = 3; // kiek pazymiu is ND
-int m = 1; // kiek studentu
 
 struct duomenys{
     string vardas, pavarde;
@@ -62,6 +61,9 @@ void isvedimas(duomenys& temp){
 
 int main()
 {
+    int m; // kiek studentu
+    cout << "Kiek studentu norite ivesti?" << endl;
+    cin >> m;
     int ivesta = 0;
     int daugiau;
     duomenys* mas;
@@ -73,7 +75,7 @@ int main()
         ivesta++;
         }
         if(ivesta == m){
-            cout << "Ar norite iveste dar 1-a studenta? (1 - taip, 0 - ne)" << endl;
+            cout << "Ar norite iveste dar 1-a studenta? (1 - taip,0 - ne)" << endl;
             cin >> daugiau;
             if(daugiau == 1){
                 duomenys* padidintas;
