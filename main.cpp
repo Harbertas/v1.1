@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ctime>
 
 using std::cout;
 using std::cin;
@@ -14,17 +15,30 @@ struct duomenys{
     int paz[n]={0};
     int egz = 0;
     double rezult = 0;
-
+    bool generuoti = false;
 };
 
 void ivedimas(duomenys& temp){
+    srand((unsigned)time(NULL));
     cout << "iveskite varda" << endl;
     cin >> temp.vardas;
     cout << "iveskite pavarde" << endl;
     cin >> temp.pavarde;
-    cout << "iveskite pazymius (" << n << ")" << endl;
-    for(int i = 0; i < n; i++){
-        cin >> temp.paz[i];
+    cout << "Ar norite, kad pazymiai butu sugeneruoti automatiskai? (1 - taip, 0 - ne)" << endl;
+    cin >> temp.generuoti;
+    if(temp.generuoti == false){
+        cout << "iveskite pazymius (" << n << ")" << endl;
+        for(int i = 0; i < n; i++){
+            cin >> temp.paz[i];
+        }
+    }
+    else{
+        int random;
+        for(int i = 0; i < n; i++){
+            random =(rand() % 11);
+            temp.paz[i] = random;
+            cout << temp.paz[i] << endl;
+        }
     }
     cout << "iveskite egzamino ivertinima" << endl;
     cin >> temp.egz;
