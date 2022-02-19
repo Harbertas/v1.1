@@ -15,7 +15,7 @@ struct duomenys{
     int paz[n]={0};
     int egz = 0;
     double rezult = 0;
-    bool generuoti = false;
+    string generuoti;
 };
 
 void ivedimas(duomenys& temp){
@@ -24,24 +24,36 @@ void ivedimas(duomenys& temp){
     cin >> temp.vardas;
     cout << "iveskite pavarde" << endl;
     cin >> temp.pavarde;
-    cout << "Ar norite, kad pazymiai butu sugeneruoti automatiskai? (1 - taip, 0 - ne)" << endl;
+    cout << "Ar norite, kad pazymiai butu sugeneruoti automatiskai? (1 - taip, bet koks simbolis - ne)" << endl;
     cin >> temp.generuoti;
-    if(temp.generuoti == false){
-        cout << "iveskite pazymius (" << n << ")" << endl;
-        for(int i = 0; i < n; i++){
-            cin >> temp.paz[i];
-        }
-    }
-    else{
+    if(temp.generuoti == "1"){
         int random;
         for(int i = 0; i < n; i++){
-            random =(rand() % 11);
+            random = 1 + (rand() % 10);
             temp.paz[i] = random;
             cout << temp.paz[i] << endl;
         }
     }
+    else{
+        cout << "iveskite pazymius (" << n << ")" << endl;
+        for(int i = 0; i < n; i++){
+            cin >> temp.paz[i];
+            while(cin.fail() || temp.paz[i] > 10 || temp.paz[i] < 1){
+                cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+                cin.clear();
+                cin.ignore(256,'\n');
+                cin >> temp.paz[i];
+            }
+        }
+    }
     cout << "iveskite egzamino ivertinima" << endl;
     cin >> temp.egz;
+    while(cin.fail() || temp.egz > 10 || temp.egz < 1){
+        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+        cin.clear();
+        cin.ignore(256,'\n');
+        cin >> temp.egz;
+    }
 }
 
 double skaiciuoti(duomenys& temp){
@@ -78,6 +90,14 @@ int main()
     int m; // kiek studentu
     cout << "Kiek studentu norite ivesti?" << endl;
     cin >> m;
+    while(cin.fail()){
+        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+        cin.clear();
+        cin.ignore(256,'\n');
+        cin >> m;
+    }
+    cin.clear();
+    cin.ignore(256,'\n');
     int ivesta = 0;
     int daugiau;
     duomenys* mas;
