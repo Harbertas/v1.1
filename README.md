@@ -6,3 +6,4 @@
 2. Įvesti studentų pažymius ir egzamino rezultatus.
 3. Apskaičiuoti galutinį pažymį naudojant vidurkio ir medianos skaičiavimo metodus.
 4. Pasirinkti kiek studentų norite įvesti, jei buvo pasirinktas per mažas skaičius, tai suteikiama galimybė įvesti dar.
+5. Pasirinkti, jog pažymiai studentui būtų generuojami atsitiktinai.
