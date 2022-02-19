@@ -22,12 +22,29 @@ struct duomenys{
     string generuoti;
 };
 
+bool onlyLetters(string name){
+    for(auto i : name){
+        if(isdigit(i) == true){
+            return false;
+        }
+    }
+    return true;
+}
+
 void ivedimas(duomenys& temp){
     srand((unsigned)time(NULL));
     cout << "iveskite varda" << endl;
     cin >> temp.vardas;
+    while(onlyLetters(temp.vardas) == false){
+        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+        cin >> temp.vardas;
+    }
     cout << "iveskite pavarde" << endl;
     cin >> temp.pavarde;
+    while(onlyLetters(temp.pavarde) == false){
+        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+        cin >> temp.pavarde;
+    }
     cout << "Ar norite, kad pazymiai butu sugeneruoti automatiskai? (1 - taip, bet koks simbolis - ne)" << endl;
     cin >> temp.generuoti;
     if(temp.generuoti == "1"){
@@ -105,8 +122,6 @@ int main()
         cin.ignore(256,'\n');
         cin >> m;
     }
-    cin.clear();
-    cin.ignore(256,'\n');
     sarasas.reserve(m);
     for(int i = 0; i < m; i++){
         if(ivesta != m){
