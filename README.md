@@ -1,9 +1,9 @@
-# V0.1 programos versija
-## main.cpp - dinaminis masyvas
-## main vektoriai.cpp - vektoriai
+# V0.2 programos versija
+## main.cpp - pagrindinis failas
+## functions.h - struktūros, funkcijų apibrėžimai ir includes
+## functions.cpp - funkcijų implementacijos
+## mix.h - skaitymo iš failo funkcijos apibrėžimas
+## mix.cpp - skaitymo iš failo funkcijos implementacija
 ### Ką galite daryti su šią programa?
-1. Įvesti studentų vardus ir pavardes.
-2. Įvesti studentų pažymius ir egzamino rezultatus.
-3. Apskaičiuoti galutinį pažymį naudojant vidurkio ir medianos skaičiavimo metodus.
-4. Pasirinkti kiek studentų norite įvesti, jei buvo pasirinktas per mažas skaičius, tai suteikiama galimybė įvesti dar.
-5. Pasirinkti, jog pažymiai studentui būtų generuojami atsitiktinai.
+1. Nuskaityti studentu duomenis iš failo
+2. Išvesti rezultatus į ekraną.
