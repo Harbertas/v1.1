@@ -86,7 +86,7 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
         tempTemp.kiekPaz = kiekPazymiu;
         ss >> pazymys;
         tempTemp.egz = pazymys;
-        skaiciuoti(tempTemp);
+        tempTemp.rezult = skaiciuoti(tempTemp);
         sarasas.push_back(tempTemp);
    }
 //  cout << splited.at(1) << endl;

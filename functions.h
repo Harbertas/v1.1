@@ -37,5 +37,7 @@ bool compare_pavarde(const duomenys&, const duomenys&);
 bool compare_g_paz(const duomenys&, const duomenys&);
 bool compare_vardas(const duomenys&, const duomenys&);
 bool onlyLetters(string);
+void rikiavimas(vector<duomenys>&);
+void spausdinti(vector<duomenys>);
 
 #endif
