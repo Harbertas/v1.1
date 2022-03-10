@@ -14,3 +14,4 @@
 1. Sukurti studentų failą, pasirenkant kiek studentų saugosite.
 2. Surikiuoti rezultatus pagal galutinį pažymį.
 3. Išvesti rezultatus į failus pagal galutinį pažymį (<5 nelaimingieji.txt, >= 5 kietekai.txt).
+4. Pasirinkti kiek pažymių norite generuoti studentui.
