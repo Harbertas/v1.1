@@ -1,7 +1,7 @@
 #include "mix.h"
 #include "functions.h"
 
-void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sarasas){
+void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sarasas, int fileLength, double &timeTaken){
   std::vector<std::string> splited;
   std::string eil;
   //----------------------------------------------------------------------
@@ -18,7 +18,8 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
     open_f.close();
   auto end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> diff = end-start; // Skirtumas (s)
-  std::cout << "Failo nuskaitymas tiesiai į eilučių vektorių užtruko: "<< diff.count() << " s\n";
+  std::cout << fileLength << " eiluciu failo nuskaitymas tiesiai į eilučių vektorių užtruko: "<< diff.count() << " s\n";
+  timeTaken += diff.count();
 
 //  start = std::chrono::high_resolution_clock::now();
 //    std::string outputas="";
@@ -52,7 +53,7 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
         }
         break;
   }
-  //cout << a-3 << endl;
+  //cout << KiekTarpu << endl;
   stringstream ss;
 
   duomenys tempTemp;

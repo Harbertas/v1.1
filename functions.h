@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <random>
 #include <ctime>
 #include <vector>
 #include <iterator>
@@ -21,6 +22,7 @@ using std::string;
 using std::endl;
 using std::vector;
 using std::stringstream;
+using std::to_string;
 
 struct duomenys{
     string vardas, pavarde;
@@ -37,7 +39,9 @@ bool compare_pavarde(const duomenys&, const duomenys&);
 bool compare_g_paz(const duomenys&, const duomenys&);
 bool compare_vardas(const duomenys&, const duomenys&);
 bool onlyLetters(string);
-void rikiavimas(vector<duomenys>&);
-void spausdinti(vector<duomenys>);
-
+void rikiavimas(vector<duomenys>&, int, double&);
+void spausdinti(vector<duomenys>, vector<duomenys>, int, double&);
+int generateFileName(string&, int&);
+void generateFileData(string, int, int, double&);
+void atskirti(vector<duomenys>&, vector<duomenys>&, int, double&);
 #endif
