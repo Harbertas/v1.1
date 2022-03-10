@@ -33,6 +33,7 @@ int main()
     rikiavimas(sarasas, fileLength, timeTaken);
     atskirti(sarasas, sarasas2, fileLength, timeTaken);
     spausdinti(sarasas, sarasas2, fileLength, timeTaken);
+    cout << '\n';
     cout << fileLength << " irasu testo laikas: " << timeTaken << endl;
     sarasas.clear();
     sarasas2.clear();
