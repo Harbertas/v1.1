@@ -62,15 +62,17 @@ void isvedimas(duomenys temp){
 void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
     start = std::chrono::high_resolution_clock::now();
+    std::stringstream my_buffer;
 
     std::ofstream rf;
     rf.open("nelaimingieji.txt");
 
-    rf << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
-    rf << "-------------------------------------------------------------------" << endl;
+    my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
+    my_buffer << "-------------------------------------------------------------------" << endl;
     for(auto el : sarasas2){
-        rf << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
+        my_buffer << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
     }
+    rf << my_buffer.str();
     rf.close();
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -80,13 +82,15 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
     timeTaken += diff.count();
 
     start = std::chrono::high_resolution_clock::now();
+    my_buffer.clear();
     std::ofstream rf2;
     rf2.open("kietekai.txt");
-    rf2 << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
-    rf2 << "-------------------------------------------------------------------" << endl;
+    my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
+    my_buffer << "-------------------------------------------------------------------" << endl;
     for(auto el : sarasas){
-        rf2 << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
+        my_buffer << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
     }
+    rf2 << my_buffer.str();
     rf2.close();
 
     end = std::chrono::high_resolution_clock::now();
@@ -165,33 +169,36 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
     rf.open(generatedFileName);
     string ND;
     int a = 0;
+    std::stringstream my_buffer;
 
     auto start = std::chrono::high_resolution_clock::now();
+
     //Virsutines eilutes spausdinimas
-    rf << std::left << std::setw(15)<< "Vardas" <<
+    my_buffer << std::left << std::setw(15)<< "Vardas" <<
     std::left << std::setw(15) << "Pavarde";
     for(int i = 0; i < pazymiuKiekis; i++){
         ND = "";
         ND += "ND" + to_string(i+1);
-        rf << std::setw(10) << ND;
+        my_buffer << std::setw(10) << ND;
     }
-    rf << std::setw(10) << "Egz.";
-    rf << endl;
+    my_buffer << std::setw(10) << "Egz.";
+    my_buffer << endl;
 
     //Studentu eilutes spausdinimas
     for(int i = 0; i < fileLength; i++){
         generatedName = vardas.at(name(mt));
         generatedSurname = pavarde.at(surname(mt));
-        rf << std::left << std::setw(15) << generatedName
+        my_buffer << std::left << std::setw(15) << generatedName
         << std::left << std::setw(15) << generatedSurname;
         for(int j = 0; j < pazymiuKiekis; j++){
-           rf << std::setw(10) << pazymys(mt);
+           my_buffer << std::setw(10) << pazymys(mt);
         }
         a++;
-        rf << std::setw(10) << pazymys(mt);
+        my_buffer << std::setw(10) << pazymys(mt);
         if(a < fileLength)
-            rf << endl;
+            my_buffer << endl;
     }
+    rf << my_buffer.str();
     rf.close();
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
