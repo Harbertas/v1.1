@@ -62,7 +62,7 @@ void isvedimas(duomenys temp){
 void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
     start = std::chrono::high_resolution_clock::now();
-    std::stringstream my_buffer;
+    stringstream my_buffer;
 
     std::ofstream rf;
     rf.open("nelaimingieji.txt");
@@ -73,6 +73,8 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
         my_buffer << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
     }
     rf << my_buffer.str();
+    my_buffer.str("");
+    my_buffer.clear();
     rf.close();
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -82,7 +84,6 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
     timeTaken += diff.count();
 
     start = std::chrono::high_resolution_clock::now();
-    my_buffer.clear();
     std::ofstream rf2;
     rf2.open("kietekai.txt");
     my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
