@@ -38,6 +38,7 @@ double skaiciuoti(duomenys& temp){
     }
     vidurkis = (double)suma / temp.kiekPaz;
     temp.rezult = 0.4 * vidurkis + 0.6 * temp.egz;
+    //cout << temp.rezult << endl;
     return temp.rezult;
 }
 
@@ -92,6 +93,8 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
         my_buffer << std::left << std::setw(15) << el.pavarde << std::left << std::setw(15) << el.vardas << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult << std::fixed << std::setprecision(2) << mediana(el) << endl;
     }
     rf2 << my_buffer.str();
+    my_buffer.str("");
+    my_buffer.clear();
     rf2.close();
 
     end = std::chrono::high_resolution_clock::now();
@@ -215,10 +218,14 @@ void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int fileLen
 
     for(auto el : sarasas){
         //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
-        if(el.rezult >= 5){
+        if(el.rezult >= 5)
             sarasas2.push_back(el);
+    }
+
+    for(auto el : sarasas){
+        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
+        if(el.rezult >= 5)
             sarasas.pop_back();
-        }
     }
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
