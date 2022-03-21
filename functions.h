@@ -7,6 +7,8 @@
 #include <random>
 #include <ctime>
 #include <vector>
+#include <list>
+#include <deque>
 #include <iterator>
 #include <algorithm>
 #include <fstream>
@@ -21,6 +23,8 @@ using std::cin;
 using std::string;
 using std::endl;
 using std::vector;
+using std::list;
+using std::deque;
 using std::stringstream;
 using std::to_string;
 

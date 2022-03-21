@@ -65,7 +65,7 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
     stringstream my_buffer;
 
     std::ofstream rf;
-    rf.open("nelaimingieji.txt");
+    rf.open("kietekai.txt");
 
     my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
     my_buffer << "-------------------------------------------------------------------" << endl;
@@ -85,7 +85,7 @@ void spausdinti(vector<duomenys> sarasas, vector<duomenys> sarasas2, int fileLen
 
     start = std::chrono::high_resolution_clock::now();
     std::ofstream rf2;
-    rf2.open("kietekai.txt");
+    rf2.open("nelaimingieji.txt");
     my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
     my_buffer << "-------------------------------------------------------------------" << endl;
     for(auto el : sarasas){
@@ -112,12 +112,13 @@ void rikiavimas(vector<duomenys>& sarasas, int fileLength, double &timeTaken){
     }
     auto start = std::chrono::high_resolution_clock::now();
 
-    if(rusiuoti == "1")
-        sort(sarasas.begin(), sarasas.end(), compare_vardas);
-    else if(rusiuoti == "2")
-        sort(sarasas.begin(), sarasas.end(), compare_pavarde);
-    else if(rusiuoti == "3")
+//    if(rusiuoti == "1")
+//        //sort(sarasas.begin(), sarasas.end(), compare_vardas);
+//    else if(rusiuoti == "2")
+//        //sort(sarasas.begin(), sarasas.end(), compare_pavarde);
+//    else if(rusiuoti == "3")
         sort(sarasas.begin(), sarasas.end(), compare_g_paz);
+        //sarasas.sort(compare_g_paz);
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
@@ -182,20 +183,20 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
         ND += "ND" + to_string(i+1);
         my_buffer << std::setw(10) << ND;
     }
-    my_buffer << std::setw(10) << "Egz.";
+    my_buffer << "Egz.";
     my_buffer << endl;
 
     //Studentu eilutes spausdinimas
     for(int i = 0; i < fileLength; i++){
         generatedName = vardas.at(name(mt));
         generatedSurname = pavarde.at(surname(mt));
-        my_buffer << std::left << std::setw(15) << generatedName
+        my_buffer << std::setw(15) << generatedName
         << std::left << std::setw(15) << generatedSurname;
         for(int j = 0; j < pazymiuKiekis; j++){
            my_buffer << std::setw(10) << pazymys(mt);
         }
         a++;
-        my_buffer << std::setw(10) << pazymys(mt);
+        my_buffer << pazymys(mt);
         if(a < fileLength)
             my_buffer << endl;
     }
@@ -205,25 +206,20 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
     std::cout << fileLength << " eiluciu failo sukurimas uztruko: "<< diff.count() << " s\n";
     timeTaken += diff.count();
+
+    cout << "Failas: " << generatedFileName << " sekmingai sukurtas!" << endl;
 }
 
 void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
-    vector<duomenys> temp;
     for(auto el : sarasas){
-        if(el.rezult < 5)
+        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
+        if(el.rezult >= 5){
             sarasas2.push_back(el);
-        else{
-            temp.push_back(el);
+            sarasas.pop_back();
         }
     }
-    sarasas.clear();
-    for(auto el : temp){
-        sarasas.push_back(el);
-    }
-    temp.clear();
-
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
     std::cout << fileLength << " eiluciu failo dalijimo i dvi grupes laikas, panaikinant pradini vector: "<< diff.count() << " s\n";
