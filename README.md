@@ -31,6 +31,10 @@
 | Atskyrimas  | 0,0009968 | 0,0019947 | 0,0009971 |
 | Visas Laikas| 0,0029913 | 0,0029917 | 0,0039891 |
 
+Išvada: 
+1. Naudojant vector konteinerius programos bendras veikimo laikas greičiausias, antroje vietoje list konteineris.
+2. List rūšiavimas yra greičiausias.
+3. Vector ir Deque nuskaitymo laikai +- vienodi.
 ### main.cpp - pagrindinis failas
 ### functions.h - struktūros, funkcijų apibrėžimai ir includes
 ### functions.cpp - funkcijų implementacijos
