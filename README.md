@@ -1,6 +1,6 @@
 # V0.5 programos versija
 ## Kas pasikeitė nuo v0.4 versijos?
-1. Sukurtos programamos naudojant VECTOR, LIST ir DEQUE
+1. Sukurtos programos naudojant VECTOR, LIST ir DEQUE
 2. Programų matavimo sparta.
 ### main.cpp - pagrindinis failas
 ### functions.h - struktūros, funkcijų apibrėžimai ir includes
