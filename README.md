@@ -1,10 +1,7 @@
-# V0.4 programos versija
-## Kas pasikeitė nuo v0.3 versijos?
-1. Pridėta galimybė pasirinkti kokį dydžio failą generuoti.
-2. Pridėta galimybė pasirinkti kiek pažymių generuoti.
-3. Patobulintas atsitiktinių skaičių generavimas.
-4. Programa išveda kiek laiko užtruko kiekvienas pagrindinis programos veiksmas.
-5. Rezultatus išveda į failus kietekai.txt ir nelaimingieji.txt.
+# V0.5 programos versija
+## Kas pasikeitė nuo v0.4 versijos?
+1. Sukurtos programamos naudojant VECTOR, LIST ir DEQUE
+2. Programų matavimo sparta.
 ### main.cpp - pagrindinis failas
 ### functions.h - struktūros, funkcijų apibrėžimai ir includes
 ### functions.cpp - funkcijų implementacijos
