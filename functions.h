@@ -38,13 +38,13 @@ struct duomenys{
 
 double skaiciuoti(duomenys&);
 double mediana(duomenys&);
-void isvedimas(duomenys);
+void isvedimas(duomenys&);
 bool compare_pavarde(const duomenys&, const duomenys&);
 bool compare_g_paz(const duomenys&, const duomenys&);
 bool compare_vardas(const duomenys&, const duomenys&);
 bool onlyLetters(string);
 void rikiavimas(vector<duomenys>&, int, double&);
-void spausdinti(vector<duomenys>, vector<duomenys>, int, double&);
+void spausdinti(vector<duomenys>&, vector<duomenys>&, int/*, double&*/);
 int generateFileName(string&, int&);
 void generateFileData(string, int, int, double&);
 void atskirti(vector<duomenys>&, vector<duomenys>&, int, double&);

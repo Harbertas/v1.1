@@ -62,7 +62,7 @@ int main()
         mix(generatedFileName, "kursiokai_copy.txt", sarasas, fileLength, timeTaken);
         rikiavimas(sarasas, fileLength, timeTaken);
         atskirti(sarasas, sarasas2, fileLength, timeTaken);
-        spausdinti(sarasas, sarasas2, fileLength, timeTaken);
+        spausdinti(sarasas, sarasas2, fileLength/*, timeTaken*/);
         cout << '\n';
         cout << fileLength << " irasu testo laikas: " << timeTaken << endl;
         sarasas.clear();

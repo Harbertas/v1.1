@@ -1,18 +1,21 @@
 #include "mix.h"
 #include "functions.h"
 
-void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sarasas, int fileLength, double &timeTaken){
+void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sarasas, int & fileLength, double &timeTaken){
   std::vector<std::string> splited;
   std::string eil;
   //----------------------------------------------------------------------
   auto start = std::chrono::high_resolution_clock::now();
   auto st=start;
+  fileLength = -1;
     std::ifstream open_f(read_vardas);
     while (open_f){
       if (!open_f.eof()) {
           std::getline(open_f, eil);
           //cout << eil << endl;
-          splited.push_back(eil);}
+          splited.push_back(eil);
+          fileLength++;
+          }
       else break;
     }
     open_f.close();
@@ -53,7 +56,7 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
         }
         break;
   }
-  //cout << KiekTarpu << endl;
+  //cout << KiekTarpu-2 << endl;
   stringstream ss;
 
   duomenys tempTemp;
@@ -75,6 +78,7 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
     else
     {
         ss.clear();
+        ss.str("");
         tempTemp = temp;
         ss << eilute;
         ss >> tempTemp.vardas >> tempTemp.pavarde;
@@ -90,6 +94,8 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
         tempTemp.rezult = skaiciuoti(tempTemp);
         sarasas.push_back(tempTemp);
    }
+    ss.str("");
+    ss.clear();
 //  cout << splited.at(1) << endl;
 //  ss << splited.at(1);
 //  string vardas, pavarde;
