@@ -34,7 +34,8 @@
 Išvada: 
 1. Naudojant list konteinerius programos bendras veikimo laikas greičiausias, antroje vietoje vector konteineris.
 2. List rūšiavimas yra greičiausias.
-3. Visų konteinerių nuskaitymo laikai +- vienodi.
+3. Vector atskyrimas greičiausias.
+4. Visų konteinerių nuskaitymo laikai +- vienodi.
 ### main.cpp - pagrindinis failas
 ### functions.h - struktūros, funkcijų apibrėžimai ir includes
 ### functions.cpp - funkcijų implementacijos
