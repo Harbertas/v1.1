@@ -36,7 +36,7 @@ double skaiciuoti(duomenys& temp){
     auto it = temp.paz.begin();
     for(int i = 0; i < temp.kiekPaz; i++){
         suma = suma + *it;
-        std::advance(it, 1);
+        it++;
     }
     vidurkis = (double)suma / temp.kiekPaz;
     temp.rezult = 0.4 * vidurkis + 0.6 * temp.egz;
@@ -231,16 +231,24 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
 void atskirti(list<duomenys>& sarasas, list<duomenys>& sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
-    auto temp = sarasas;
-    for(auto &el : sarasas){
-        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
-        if(el.rezult >= 5){
-            sarasas2.push_back(el);
-            temp.pop_back();
+    list<duomenys>::reverse_iterator it;
+    for(it = sarasas.rbegin(); it != sarasas.rend(); it++){
+        if(it->rezult >= 5){
+            sarasas2.push_back(*it);
+            sarasas.pop_back();
+            --it;
         }
     }
-    sarasas = temp;
-    temp.clear();
+//    auto temp = sarasas;
+//    for(auto &el : sarasas){
+//        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
+//        if(el.rezult >= 5){
+//            sarasas2.push_back(el);
+//            temp.pop_back();
+//        }
+//    }
+//    sarasas = temp;
+//    temp.clear();
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
