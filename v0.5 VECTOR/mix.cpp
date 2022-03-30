@@ -43,7 +43,7 @@ void mix(std::string read_vardas, std::string write_vardas, vector<duomenys>& sa
 //  std::cout << "Visas sugaištas laikas: "<< diff.count() << " s\n\n";
 
   int KiekTarpu = 0;
-  for(auto el : splited)
+  for(auto &el : splited)
   {
         for(int i = 0; i < el.length(); i++)
         {
