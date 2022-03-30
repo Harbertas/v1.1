@@ -225,16 +225,41 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
 void atskirti(deque<duomenys>& sarasas, deque<duomenys>& sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
-    auto temp = sarasas;
-    for(auto &el : sarasas){
-        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
-        if(el.rezult >= 5){
-            sarasas2.push_back(el);
-            temp.pop_back();
+    deque<duomenys>::reverse_iterator it;
+    for(it = sarasas.rbegin(); it != sarasas.rend(); it++){
+        if(it->rezult >= 5){
+            sarasas2.push_back(*it);
+            sarasas.pop_back();
+        }
+        if(sarasas2.size() % (fileLength / 10) == 0){
+            sarasas2.shrink_to_fit();
+            //sarasas.shrink_to_fit();
         }
     }
-    sarasas = temp;
-    temp.clear();
+
+//    for(auto el = sarasas.end()-1; el >= sarasas.begin(); el--){
+//        if(el->rezult >= 5){
+//            sarasas2.push_back(*el);
+//            sarasas.pop_back();
+//        }
+//        if(sarasas2.size() % (fileLength / 10) == 0){
+//            sarasas2.shrink_to_fit();
+//            //sarasas.shrink_to_fit();
+//        }
+//    }
+
+//    auto temp = sarasas;
+//    for(auto &el : sarasas){
+//        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
+//        if(el.rezult >= 5){
+//            sarasas2.push_back(el);
+//            temp.pop_back();
+//        }
+//    }
+    sarasas.shrink_to_fit();
+    sarasas2.shrink_to_fit();
+//    sarasas = temp;
+//    temp.clear();
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
