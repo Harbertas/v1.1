@@ -6,35 +6,35 @@
 | File Size   | VECTOR    | LIST      | DEQUE     |
 | ----------- | --------- | --------- | --------- |
 | 10 000 000  |           |           |           |
-| Nuskaitymas | 6,56743   | 7,32453   | 6,52963   |
-| Rūšiavimas  | 22,5238   | 15,1796   | 48,6143   |
-| Atskyrimas  | 6,14556   | 26,519    | 58,752    |
-| Visas Laikas| 35,2368   | 49,0231   | 113,896   |
+| Nuskaitymas | 6,56743   | 7,4048    | 6,57549   |
+| Rūšiavimas  | 22,5238   | 15,1803   | 48,5964   |
+| Atskyrimas  | 6,14556   | 9,90316   | 8,91084   |
+| Visas Laikas| 35,2368   | 32,4883   | 64,0827   |
 | 1 000 000   |           |           |           |
-| Nuskaitymas | 0,674196  | 0,696138  | 0,649767  |
-| Rūšiavimas  | 1,81215   | 1,0472    | 3,83383   |
-| Atskyrimas  | 0,540555  | 2,3946    | 1,76381   |
-| Visas Laikas| 3,0269    | 4,13793   | 6,24741   |
+| Nuskaitymas | 0,674196  | 0,732539  | 0,661231  |
+| Rūšiavimas  | 1,81215   | 1,22027   | 4,02281   |
+| Atskyrimas  | 0,540555  | 0,922065  | 0,734049  |
+| Visas Laikas| 3,0269    | 2.87487   | 5,41809   |
 | 100 000     |           |           |           |
-| Nuskaitymas | 0,0787889 | 0,072805  | 0,0822853 |
-| Rūšiavimas  | 0,140624  | 0,0738027 | 0,293227  |
-| Atskyrimas  | 0,0468748 | 0,2244    | 0,155584  |
-| Visas Laikas| 0,266288  | 0,371008  | 0,531096  |
+| Nuskaitymas | 0,0787889 | 0,0797862 | 0,0668212 |
+| Rūšiavimas  | 0,140624  | 0,0812882 | 0,299705  |
+| Atskyrimas  | 0,0468748 | 0,0862754 | 0,0618351 |
+| Visas Laikas| 0,266288  | 0,24735   | 0,428361  |
 | 10 000      |           |           |           |
-| Nuskaitymas | 0,0069805 | 0,007978  | 0,007979  |
-| Rūšiavimas  | 0,0119678 | 0,0049865 | 0,0269279 |
-| Atskyrimas  | 0,0049868 | 0,0169547 | 0,0159578 |
-| Visas Laikas| 0,0239351 | 0,0299192 | 0,0508647 |
+| Nuskaitymas | 0,0069805 | 0,009973  | 0,0089758 |
+| Rūšiavimas  | 0,0119678 | 0,0059842 | 0,0239358 |
+| Atskyrimas  | 0,0049868 | 0,005984  | 0,0059839 |
+| Visas Laikas| 0,0239351 | 0,0219412 | 0,0388955 |
 | 1 000       |           |           |           |
-| Nuskaitymas | 0,0009974 | 0,000997  | 0,0009974 |
-| Rūšiavimas  | 0,0009971 | 0,000000  | 0,0019946 |
-| Atskyrimas  | 0,0009968 | 0,0019947 | 0,0009971 |
-| Visas Laikas| 0,0029913 | 0,0029917 | 0,0039891 |
+| Nuskaitymas | 0,0009974 | 0,0009963 | 0,0009976 |
+| Rūšiavimas  | 0,0009971 | 0,0009985 | 0,0019944 |
+| Atskyrimas  | 0,0009968 | 0,0009971 | 0,0000000 |
+| Visas Laikas| 0,0029913 | 0,0029919 | 0,002992  |
 
 Išvada: 
-1. Naudojant vector konteinerius programos bendras veikimo laikas greičiausias, antroje vietoje list konteineris.
+1. Naudojant list konteinerius programos bendras veikimo laikas greičiausias, antroje vietoje vector konteineris.
 2. List rūšiavimas yra greičiausias.
-3. Vector ir Deque nuskaitymo laikai +- vienodi.
+3. Visų konteinerių nuskaitymo laikai +- vienodi.
 ### main.cpp - pagrindinis failas
 ### functions.h - struktūros, funkcijų apibrėžimai ir includes
 ### functions.cpp - funkcijų implementacijos
