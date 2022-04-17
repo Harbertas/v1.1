@@ -1,4 +1,7 @@
 # V1.0 programos versija
+#PirmaStrategija - Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai). Nesunku pastebėti, kad tokia strategija yra neefektyvi užimamos atminties atžvilgiu (įsitikinkite tuo!), tačiau šiame žingsnyje svarbiausia yra patyrinėti, kaip programos veikimo sparta priklauso nuo konteinerio tipo?
+
+#AntraStrategija - Bendro studentų konteinerio (vector, list ir deque) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "vargšiukų" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik kietiakai. Atminties atveju tai efektyviau, tačiau dažni trynimai gali būti "skausmingi", ypač tam tikro tipo konteineriams.
 1. Palyginta programos sparta naudojant #PirmaStrategija ir #AntraStrategija
 2. Patyrinėti ankčiau nenaudoti algoritmai (bandyta, bet nepavykta)
 3. Sukurtas MakeFile.
@@ -6,12 +9,41 @@
   3.2. Parašyti make
   3.3. Parašyti ./main
   3.4. Sekti kas rašoma ekrane.
-  3.5. Norint ištrinti *.o ir main.exe failus parašyti make clean
+  3.5. Norint ištrinti *.o ir main.exe failus, parašyti make clean
+  
+## Spartos analizė (#PirmaStrategija)
+| File Size   | VECTOR    | LIST      | DEQUE     | 
+| ----------- | --------- | --------- | --------- |
+| 10 000 000  |           |           |           |
+| Nuskaitymas | 6,56743   | 7,4048    | 6,57549   |
+| Rūšiavimas  | 22,5238   | 15,1803   | 48,5964   |
+| Atskyrimas  | 6,60743   | 19,0359   | 92,5585   |
+| Visas Laikas| 35,69864  | 42,5798   | 148,575   |
+| 1 000 000   |           |           |           |
+| Nuskaitymas | 0,674196  | 0,732539  | 0,661231  |
+| Rūšiavimas  | 1,81215   | 1,22027   | 4,02281   |
+| Atskyrimas  | 0,590926  | 1,78077   | 1,32697   |
+| Visas Laikas| 3,27331   | 3,6892    | 5,98459   |
+| 100 000     |           |           |           |
+| Nuskaitymas | 0,0787889 | 0,0797862 | 0,0668212 |
+| Rūšiavimas  | 0,140624  | 0,0812882 | 0,299705  |
+| Atskyrimas  | 0,0518615 | 0,165558  | 0,115691  |
+| Visas Laikas| 0,269788  | 0,325131  | 0,480726  |
+| 10 000      |           |           |           |
+| Nuskaitymas | 0,0069805 | 0,009973  | 0,0089758 |
+| Rūšiavimas  | 0,0119678 | 0,0059842 | 0,0239358 |
+| Atskyrimas  | 0,0059844 | 0,0139627 | 0,0119675 |
+| Visas Laikas| 0,0269274 | 0,0309178 | 0,0428845 |
+| 1 000       |           |           |           |
+| Nuskaitymas | 0,0009974 | 0,0009963 | 0,0009976 |
+| Rūšiavimas  | 0,0009971 | 0,0009985 | 0,0019944 |
+| Atskyrimas  | 0,0009975 | 0,0009973 | 0,0009974 |
+| Visas Laikas| 0,0029924 | 0,0029921 | 0,0039884 |
 # V0.5 programos versija
 ## Kas pasikeitė nuo v0.4 versijos?
 1. Sukurtos programos naudojant VECTOR, LIST ir DEQUE
 2. Programų matavimo sparta.
-## Spartos analizė
+## Spartos analizė (#AntraStrategija)
 | File Size   | VECTOR    | LIST      | DEQUE     |
 | ----------- | --------- | --------- | --------- |
 | 10 000 000  |           |           |           |
