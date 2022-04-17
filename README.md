@@ -2,6 +2,11 @@
 1. Palyginta programos sparta naudojant #PirmaStrategija ir #AntraStrategija
 2. Patyrinėti ankčiau nenaudoti algoritmai (bandyta, bet nepavykta)
 3. Sukurtas MakeFile.
+  3.1. Naudoti UNIX OS terminalą.
+  3.2. Parašyti make
+  3.3. Parašyti ./main
+  3.4. Sekti kas rašoma ekrane.
+  3.5. Norint ištrinti *.o ir main.exe failus parašyti make clean
 # V0.5 programos versija
 ## Kas pasikeitė nuo v0.4 versijos?
 1. Sukurtos programos naudojant VECTOR, LIST ir DEQUE
