@@ -39,6 +39,11 @@
 | Rūšiavimas  | 0,0009971 | 0,0009985 | 0,0019944 |
 | Atskyrimas  | 0,0009975 | 0,0009973 | 0,0009974 |
 | Visas Laikas| 0,0029924 | 0,0029921 | 0,0039884 |
+
+Išvada: 
+1. Naudojant #AntraStrategija išnaudojama ko ne perpus mažiau atminties.
+2. Naudojant #AntraStrategija programos vykdymo greitis spartesnis.
+
 # V0.5 programos versija
 ## Kas pasikeitė nuo v0.4 versijos?
 1. Sukurtos programos naudojant VECTOR, LIST ir DEQUE
