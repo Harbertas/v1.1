@@ -87,3 +87,56 @@ Išvada:
 2. Surikiuoti rezultatus pagal galutinį pažymį.
 3. Išvesti rezultatus į failus pagal galutinį pažymį (<5 nelaimingieji.txt, >= 5 kietekai.txt).
 4. Pasirinkti kiek pažymių norite generuoti studentui.
+
+# V0.4 programos versija
+## Kas pasikeitė nuo v0.3 versijos?
+1. Pridėta galimybė pasirinkti kokį dydžio failą generuoti.
+2. Pridėta galimybė pasirinkti kiek pažymių generuoti.
+3. Patobulintas atsitiktinių skaičių generavimas.
+4. Programa išveda kiek laiko užtruko kiekvienas pagrindinis programos veiksmas.
+5. Rezultatus išveda į failus kietekai.txt ir nelaimingieji.txt.
+### main.cpp - pagrindinis failas
+### functions.h - struktūros, funkcijų apibrėžimai ir includes
+### functions.cpp - funkcijų implementacijos
+### mix.h - skaitymo iš failo funkcijos apibrėžimas
+### mix.cpp - skaitymo iš failo funkcijos implementacija
+### Ką galite daryti su šia programa?
+1. Sukurti studentų failą, pasirenkant kiek studentų saugosite.
+2. Surikiuoti rezultatus pagal galutinį pažymį.
+3. Išvesti rezultatus į failus pagal galutinį pažymį (<5 nelaimingieji.txt, >= 5 kietekai.txt).
+4. Pasirinkti kiek pažymių norite generuoti studentui.
+
+# V0.3 programos versija
+## Kas pasikeitė nuo v0.2 versijos?
+1. Pridėta exception handling.
+2. Funckijos aprašymai ir implementacijos perktelti į atskirus failus. 
+### main.cpp - pagrindinis failas
+### functions.h - struktūros, funkcijų apibrėžimai ir includes
+### functions.cpp - funkcijų implementacijos
+### mix.h - skaitymo iš failo funkcijos apibrėžimas
+### mix.cpp - skaitymo iš failo funkcijos implementacija
+### Ką galite daryti su šia programa?
+1. Nuskaityti studentų duomenis iš failo.
+2. Surikiuoti rezultatus pagal vardą, pavardę, galutinį pažymį.
+3. Išvesti rezultatus į ekraną arba failą.
+
+# V0.2 programos versija
+### main.cpp - pagrindinis failas
+### functions.h - struktūros, funkcijų apibrėžimai ir includes
+### functions.cpp - funkcijų implementacijos
+### mix.h - skaitymo iš failo funkcijos apibrėžimas
+### mix.cpp - skaitymo iš failo funkcijos implementacija
+### Ką galite daryti su šia programa?
+1. Nuskaityti studentų duomenis iš failo.
+2. Surikiuoti rezultatus pagal vardą, pavardę, galutinį pažymį.
+3. Išvesti rezultatus į ekraną.
+
+# V0.1 programos versija
+## main.cpp - dinaminis masyvas
+## main vektoriai.cpp - vektoriai
+### Ką galite daryti su šią programa?
+1. Įvesti studentų vardus ir pavardes.
+2. Įvesti studentų pažymius ir egzamino rezultatus.
+3. Apskaičiuoti galutinį pažymį naudojant vidurkio ir medianos skaičiavimo metodus.
+4. Pasirinkti kiek studentų norite įvesti, jei buvo pasirinktas per mažas skaičius, tai suteikiama galimybė įvesti dar.
+5. Pasirinkti, jog pažymiai studentui būtų generuojami atsitiktinai.
