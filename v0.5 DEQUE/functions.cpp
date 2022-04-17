@@ -237,6 +237,7 @@ void atskirti(deque<duomenys>& sarasas, deque<duomenys>& sarasas2, int fileLengt
         }
     }
 
+      //#Kitas budas
 //    for(auto el = sarasas.end()-1; el >= sarasas.begin(); el--){
 //        if(el->rezult >= 5){
 //            sarasas2.push_back(*el);
@@ -248,19 +249,21 @@ void atskirti(deque<duomenys>& sarasas, deque<duomenys>& sarasas2, int fileLengt
 //        }
 //    }
 
-//    auto temp = sarasas;
+//    deque<duomenys> temp;
 //    for(auto &el : sarasas){
 //        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
 //        if(el.rezult >= 5){
 //            sarasas2.push_back(el);
-//            temp.pop_back();
+//        }
+//        else{
+//            temp.push_back(el);
 //        }
 //    }
-    sarasas.shrink_to_fit();
-    sarasas2.shrink_to_fit();
 //    sarasas = temp;
 //    temp.clear();
 
+    sarasas.shrink_to_fit();
+    sarasas2.shrink_to_fit();
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
     std::cout << fileLength << " eiluciu failo dalijimo i dvi grupes laikas, panaikinant pradini deque: "<< diff.count() << " s\n";
