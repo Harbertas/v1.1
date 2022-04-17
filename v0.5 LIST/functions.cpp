@@ -239,12 +239,14 @@ void atskirti(list<duomenys>& sarasas, list<duomenys>& sarasas2, int fileLength,
             --it;
         }
     }
-//    auto temp = sarasas;
+//    list<duomenys> temp;
 //    for(auto &el : sarasas){
 //        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
 //        if(el.rezult >= 5){
 //            sarasas2.push_back(el);
-//            temp.pop_back();
+//        }
+//        else{
+//            temp.push_back(el);
 //        }
 //    }
 //    sarasas = temp;
