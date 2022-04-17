@@ -1,6 +1,6 @@
 # V1.0 programos versija
 1. Palyginta programos sparta naudojant #PirmaStrategija ir #AntraStrategija
-2. Patyrinėti ankčiau nenaudoti algoritmai
+2. Patyrinėti ankčiau nenaudoti algoritmai (bandyta, bet nepavykta)
 3. Sukurtas MakeFile.
 # V0.5 programos versija
 ## Kas pasikeitė nuo v0.4 versijos?
