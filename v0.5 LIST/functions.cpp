@@ -231,24 +231,24 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
 void atskirti(list<duomenys>& sarasas, list<duomenys>& sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
-    list<duomenys>::iterator it;
-    for(it = sarasas.begin(); it != sarasas.end(); ++it){
-        if(it->rezult >= 5){
-            break;
-        }
-    }
-    std::copy(it, sarasas.end(), back_inserter(sarasas2));
-    sarasas.erase(it, sarasas.end());
-
-
-//    list<duomenys>::reverse_iterator it;
-//    for(it = sarasas.rbegin(); it != sarasas.rend(); ++it){
+//    list<duomenys>::iterator it;
+//    for(it = sarasas.begin(); it != sarasas.end(); ++it){
 //        if(it->rezult >= 5){
-//            sarasas2.push_back(*it);
-//            sarasas.pop_back();
-//            it--;
+//            break;
 //        }
 //    }
+//    std::copy(it, sarasas.end(), back_inserter(sarasas2));
+//    sarasas.erase(it, sarasas.end());
+
+
+    list<duomenys>::reverse_iterator it;
+    for(it = sarasas.rbegin(); it != sarasas.rend(); ++it){
+        if(it->rezult >= 5){
+            sarasas2.push_back(*it);
+            sarasas.pop_back();
+            it--;
+        }
+    }
 
 
 //    list<duomenys> temp;
