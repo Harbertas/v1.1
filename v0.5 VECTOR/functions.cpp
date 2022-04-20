@@ -127,7 +127,16 @@ void rikiavimas(vector<duomenys>& sarasas, int fileLength, double &timeTaken){
 //    else if(rusiuoti == "2")
 //        //sort(sarasas.begin(), sarasas.end(), compare_pavarde);
 //    else if(rusiuoti == "3")
+
+//        auto lambda_func = [&](duomenys t1, duomenys t2){
+//            if(t1.rezult == t2.rezult){
+//                return t1.pavarde < t2.pavarde;
+//            }
+//            return t1.rezult < t2.rezult;
+//        };
+//        sort(sarasas.begin(), sarasas.end(), lambda_func);
         sort(sarasas.begin(), sarasas.end(), compare_g_paz);
+
         //sarasas.sort(compare_g_paz);
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -222,23 +231,39 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
     cout << "Failas: " << generatedFileName << " sekmingai sukurtas!" << endl;
 }
 
+bool IsOdd(duomenys &duom){
+   //cout << duom.rezult << endl;
+    return duom.rezult >= 5;
+}
+
 void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
+//   vector<duomenys>::iterator it;
+//   for(it = sarasas.begin(); it != sarasas.end(); ++it){
+//       if(it->rezult >= 5){
+//           break;
+//       }
+//   }
+//   std::copy(it, sarasas.end(), back_inserter(sarasas2));
+//   sarasas.erase(it, sarasas.end());
+
     vector<duomenys>::reverse_iterator it;
-    for(it = sarasas.rbegin(); it != sarasas.rend(); it++){
+    for(it = sarasas.rbegin(); it != sarasas.rend(); ++it){
         if(it->rezult >= 5){
             sarasas2.push_back(*it);
             sarasas.pop_back();
         }
         if(sarasas2.size() % (fileLength / 10) == 0){
             sarasas2.shrink_to_fit();
+            //Neveikia!
             //sarasas.shrink_to_fit();
         }
     }
 
-    //auto temp = sarasas;
+    //netikslinga
     //sarasas2.reserve(fileLength);
+
 //    for(auto el = sarasas.end()-1; el >= sarasas.begin(); el--){
 //        if(el->rezult >= 5){
 //            sarasas2.push_back(*el);
@@ -256,10 +281,20 @@ void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int fileLen
 //            sarasas.pop_back();
 //        }
 //    }
-    //sarasas = temp;
+//    vector<duomenys> temp;
+//    for(auto &el : sarasas){
+//        //cout << el.vardas << "    " << el.pavarde << "      " << el.rezult << endl;
+//        if(el.rezult >= 5){
+//            sarasas2.push_back(el);
+//        }
+//        else{
+//            temp.push_back(el);
+//        }
+//    }
+//    sarasas = temp;
+//    temp.clear();
     sarasas.shrink_to_fit();
     sarasas2.shrink_to_fit();
-    //temp.clear();
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = end-start; // Skirtumas (s)
