@@ -94,9 +94,9 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
     int KiekTarpu = 0;
     for(auto &el : splited)
     {
-        for(int i = 0; i < (int)el.length(); i++)
+        for(int i = 0; i < el.length(); i++)
         {
-            if(i != (int)el.length()-1){
+            if(i != el.length()-1){
                 //cout << "symb " << el.at(i) << " symb+1 " << el.at(i+1) << endl;
                 if((el.at(i) == ' ') && (el.at(i+1) != ' ')){
                     KiekTarpu++;
@@ -107,7 +107,6 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
     }
     stringstream ss;
 
-    duomenys tempTemp;
     duomenys temp;
 
     int pazymys, kiek = 1, kiekPazymiu = KiekTarpu-2;
@@ -127,27 +126,26 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
         {
             ss.clear();
             ss.str("");
-            tempTemp = temp;
             ss << eilute;
             ss >> vardas >> pavarde;
-            tempTemp.setVardas(vardas);
-            tempTemp.setPavarde(pavarde);
+            temp.setVardas(vardas);
+            temp.setPavarde(pavarde);
             //cout << tempTemp.vardas << " " << tempTemp.pavarde << endl;
             for(int i = 0; i < kiekPazymiu; i++)
             {
                 ss >> pazymys;
-                tempTemp.setPaz(pazymys);
+                temp.setPaz(pazymys);
+
             }
-            tempTemp.setKiekPaz(kiekPazymiu);
+            temp.setKiekPaz(kiekPazymiu);
             ss >> pazymys;
-            tempTemp.setEgz(pazymys);
-            double paz;
-            paz = tempTemp.skaiciuoti(tempTemp);
-            tempTemp.setRezult(paz);
-            sarasas.push_back(tempTemp);
+            temp.setEgz(pazymys);
+            temp.setRezult(temp.skaiciuoti(temp));
+            sarasas.push_back(temp);
         }
             ss.str("");
             ss.clear();
+            temp.paz_.clear();
         }
         return df;
 }

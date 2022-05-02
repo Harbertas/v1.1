@@ -61,6 +61,12 @@ int main()
         }
         std::ifstream df(generatedFileName);
         skaityti.readStudent(df, sarasas, timeTaken);
+//        for(auto &el : sarasas){
+//            for(int i = 0; i < 5; i++){
+//                cout << el.getPaz(i) << " ";
+//            }
+//            cout << '\n';
+//        }
         //mix(generatedFileName, "kursiokai_copy.txt", sarasas, fileLength, timeTaken);
         rikiavimas(sarasas, fileLength, timeTaken);
         atskirti(sarasas, sarasas2, fileLength, timeTaken);
