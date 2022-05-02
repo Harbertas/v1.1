@@ -20,6 +20,35 @@
 | Atskyrimas  | 0,119681  | 0,115691  | 0,139627  |  0,147606 |
 | Visas Laikas| 0,823797  | 0,819808  | 0,858704  |  0,880646 |
 
+## Analizė CLASS vs STRUCT
+| File Size   | VECTOR CLASS | VECTOR STRUCT |
+| ----------- | ------------ | ------------- |
+| 10 000 000  |              |               |
+| Nuskaitymas | 6,96538      | 6,56743       |
+| Rūšiavimas  | 27,5603      | 22,5238       |
+| Atskyrimas  |  6,359       | 6,14556       |
+| Visas Laikas| 40,8847      | 35,2368       |
+| 1 000 000   |              |               |
+| Nuskaitymas | 0,676192     | 0,674196      |
+| Rūšiavimas  | 2,18715      | 1,81215       |
+| Atskyrimas  | 0,630314     | 0,540555      |
+| Visas Laikas| 3,49366      | 3,0269        |
+| 100 000     |              |               |
+| Nuskaitymas | 0.069812     | 0,0787889     |
+| Rūšiavimas  | 0.16855      | 0,140624      |
+| Atskyrimas  | 0.0608369    | 0,0468748     |
+| Visas Laikas| 0.299199     | 0,269788      |
+| 10 000      |              |               |
+| Nuskaitymas | 0,0089759    | 0,0069805     |
+| Rūšiavimas  | 0,0159573    | 0,0119678     |
+| Atskyrimas  | 0,0059842    | 0,0049868     |
+| Visas Laikas| 0,0309174    | 0,0239351     |
+| 1 000       |              |               |
+| Nuskaitymas | 0,0019948    | 0,0009974     |
+| Rūšiavimas  | 0,0009976    | 0,0009971     |
+| Atskyrimas  | 0,0009971    | 0,0009968     |
+| Visas Laikas| 0,0039895    | 0,0029913     |
+
 # V1.0 programos versija
 #PirmaStrategija - Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai). Nesunku pastebėti, kad tokia strategija yra neefektyvi užimamos atminties atžvilgiu (įsitikinkite tuo!), tačiau šiame žingsnyje svarbiausia yra patyrinėti, kaip programos veikimo sparta priklauso nuo konteinerio tipo?
 
