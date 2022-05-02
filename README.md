@@ -1,3 +1,25 @@
+# V1.1 programos versija
+1. Pakeista iš struktūros i klasę.
+2. Panaudoti optimizavimo flag'ai.
+3. ## Optimizavimo analizė VECTOR VS CODE MINGW64 (O1, O2, O3)
+|     FLAG    |    -O1    |   -O2     |   -O3     |  REGULAR  |
+| ----------- | --------- | --------- | --------- | --------- |
+| 10 000 000  |           |           |           |           |
+| Nuskaitymas |     -     |     -     |     -     |     -     |
+| Rūšiavimas  |     -     |     -     |     -     |     -     |
+| Atskyrimas  |     -     |     -     |     -     |     -     |
+| Visas Laikas|     -     |     -     |     -     |     -     |
+| 1 000 000   |           |           |           |           |
+| Nuskaitymas |  1,12     |  1,11801  |  1,2798   |   1,25664 |
+| Rūšiavimas  |  7,75227  |  7,73233  |  7,69243  |   8,12727 |
+| Atskyrimas  |  1,19181  |  1,18284  |  1,18084  |   1,50797 |
+| Visas Laikas| 10,0641   | 10,03318  | 10,15307  |  10,8919  |
+| 100 000     |           |           |           |           |
+| Nuskaitymas | 0,120677  | 0,120677  | 0,123669  |  0,11968  |
+| Rūšiavimas  | 0,583439  | 0,58344   | 0,595408  |  0,61336  |
+| Atskyrimas  | 0,119681  | 0,115691  | 0,139627  |  0,147606 |
+| Visas Laikas| 0,823797  | 0,819808  | 0,858704  |  0,880646 |
+
 # V1.0 programos versija
 #PirmaStrategija - Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai). Nesunku pastebėti, kad tokia strategija yra neefektyvi užimamos atminties atžvilgiu (įsitikinkite tuo!), tačiau šiame žingsnyje svarbiausia yra patyrinėti, kaip programos veikimo sparta priklauso nuo konteinerio tipo?
 
