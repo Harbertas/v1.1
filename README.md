@@ -1,14 +1,14 @@
 # V1.1 programos versija
 1. Pakeista iš struktūros i klasę.
 2. Panaudoti optimizavimo flag'ai.
-## Optimizavimo analizė VECTOR VS CODE MINGW64 (O1, O2, O3)
+## Optimizavimo analizė VECTOR VS CODE MINGW64 (O1, O2, O3) 10 000 000 - CODEBLOCKS
 |     FLAG    |    -O1    |   -O2     |   -O3     |  REGULAR  |
 | ----------- | --------- | --------- | --------- | --------- |
 | 10 000 000  |           |           |           |           |
-| Nuskaitymas |     -     |     -     |     -     |     -     |
-| Rūšiavimas  |     -     |     -     |     -     |     -     |
-| Atskyrimas  |     -     |     -     |     -     |     -     |
-| Visas Laikas|     -     |     -     |     -     |     -     |
+| Nuskaitymas |  7,16445  |  7,11857  |  7,2323   |  7,09068  |
+| Rūšiavimas  | 28,2978   | 28,7362   | 29,7261   | 28,4544   |
+| Atskyrimas  |  6,57801  |  7,07288  |  6,68226  |  7,0109   |
+| Visas Laikas| 42,0402   | 42,9277   | 43,6406   | 42,556    |
 | 1 000 000   |           |           |           |           |
 | Nuskaitymas |  1,12     |  1,11801  |  1,2798   |   1,25664 |
 | Rūšiavimas  |  7,75227  |  7,73233  |  7,69243  |   8,12727 |
