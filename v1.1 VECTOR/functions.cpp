@@ -68,8 +68,8 @@ duomenys::~duomenys() {
 }
 duomenys::duomenys(const duomenys& old_duom) {
     //cout << "Copy constructor called " << endl;
-    vardas_ = old_duom.vardas_;
-    pavarde_ = old_duom.pavarde_;
+    zmogus::vardas_ = old_duom.vardas_;
+    zmogus::pavarde_ = old_duom.pavarde_;
     paz_ = old_duom.paz_;
     egz_ = old_duom.egz_;
     kiekPaz_ = old_duom.kiekPaz_;
@@ -80,8 +80,8 @@ duomenys& duomenys::operator=(const duomenys& other) { // assignment operator
     //cout << "Assignment operator called " << endl;
     paz_.clear();
     if (this != &other) { // protect against invalid self-assignment
-        vardas_ = other.vardas_;
-        pavarde_ = other.pavarde_;
+        zmogus::vardas_ = other.vardas_;
+        zmogus::pavarde_ = other.pavarde_;
         paz_ = other.paz_;
         egz_ = other.egz_;
         kiekPaz_ = other.kiekPaz_;

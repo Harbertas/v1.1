@@ -29,19 +29,27 @@ using std::deque;
 using std::stringstream;
 using std::to_string;
 
-class duomenys{
-    private:
+class zmogus {
+    protected:
         string vardas_, pavarde_;
+    public: 
+        inline string vardas() const { return vardas_; }    // get'eriai, inline
+        inline string pavarde() const { return pavarde_; }  // get'eriai, inline
+        virtual void setVardas(string v) = 0;
+        virtual void setPavarde(string p) = 0;
+        zmogus(string var = "", string pav = "") : vardas_{var}, pavarde_{pav}{}
+};
+
+class duomenys : public zmogus{
+    private:
         vector<int> paz_;
         int egz_ = 0;
         int kiekPaz_ = 0;
         double rezult_ = 0;
     public:
-        duomenys() : egz_(0){} // duomenys(){egz = 0}
+        duomenys(vector<int> paz_ = { 0 }, int egz_ = 0, int kiekPaz_ = 0, double rezult_ = 0, string var = "", string pav = "") : zmogus{var, pav} {}
         duomenys(std::ifstream& df);
 
-        inline string vardas() const { return vardas_; }    // get'eriai, inline
-        inline string pavarde() const { return pavarde_; }  // get'eriai, inline
         inline double rezult() const { return rezult_; }  // get'eriai, inline
         inline int egz() const { return egz_; }  // get'eriai, inline
         inline int kiekPaz() const { return kiekPaz_; }  // get'eriai, inline
@@ -50,12 +58,13 @@ class duomenys{
         int getPaz(int &i) const {return paz_.at(i);}  // get'eriai
 
         std::istream& readStudent(std::ifstream&, vector<duomenys>&, double&);  // set'eriai
-        void setVardas(string v){vardas_ = v;}
-        void setPavarde(string p){pavarde_ = p;}
         void setPaz(int p){paz_.push_back(p);}
         void setKiekPaz(int kiek){kiekPaz_ = kiek;}
         void setRezult(double rez){rezult_ = rez;}
         void setEgz(int egz){egz_ = egz;}
+        void setVardas(string v) { vardas_ = v; }
+        void setPavarde(string p) { pavarde_ = p; }
+
         ~duomenys(); // destructor
         duomenys(const duomenys&); // copy constructor
         duomenys& operator=(const duomenys&); // assignment operator
