@@ -1,3 +1,6 @@
+# V1.5 programos versija
+1. Pridėta abstrakti klasė 'zmogus'.
+2. Klasė 'duomenys' paveldi klasę 'zmogus'.
 # V1.2 programos versija
 1. Pridėta #rule of three
 # V1.1 programos versija
