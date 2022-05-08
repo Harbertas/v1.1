@@ -10,17 +10,17 @@ int main()
 
     int fileLength;
     int pazymiuKiekis;
-    double timeTaken;
+    double timeTaken = 0;
 
     string generuoti;
     cout << "Ar norite generuoti faila? (0 - ne, 1 - taip)" << endl;
     cin >> generuoti;
-    while((generuoti != "0" && generuoti != "1") || onlyLetters(generuoti) == true){
-        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
-        cin.clear();
-        cin.ignore(256,'\n');
-        cin >> generuoti;
-    }
+    //while((generuoti != "0" && generuoti != "1") || onlyLetters(generuoti) == true){
+    //    cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+    //    cin.clear();
+    //    cin.ignore(256,'\n');
+    //    cin >> generuoti;
+    //}
     if(generuoti == "1"){
         string generatedFileName;
         //Failo pavadinimo ir ilgio pasirinkimas
@@ -37,12 +37,12 @@ int main()
         cout << "Iveskite failo ilgi" << endl;
         cin >> fileLength;
 
-        while(cin.fail()){
-            cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
-            cin.clear();
-            cin.ignore(256,'\n');
-            cin >> fileLength;
-        }
+        //while(cin.fail()){
+        //    cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+        //    cin.clear();
+        //    cin.ignore(256,'\n');
+        //    cin >> fileLength;
+        //}
 
         generatedFileName += to_string(fileLength) + ".txt";
 
@@ -61,20 +61,26 @@ int main()
         }
         std::ifstream df(generatedFileName);
         skaityti.readStudent(df, sarasas, timeTaken);
-//        for(auto &el : sarasas){
-//            for(int i = 0; i < 5; i++){
-//                cout << el.getPaz(i) << " ";
-//            }
-//            cout << '\n';
-//        }
         //mix(generatedFileName, "kursiokai_copy.txt", sarasas, fileLength, timeTaken);
         rikiavimas(sarasas, fileLength, timeTaken);
         atskirti(sarasas, sarasas2, fileLength, timeTaken);
         spausdinti(sarasas, sarasas2, fileLength/*, timeTaken*/);
         cout << '\n';
-        cout << fileLength << " irasu testo laikas: " << timeTaken << endl;
-        sarasas.clear();
-        sarasas2.clear();
+        cout << fileLength << " irasu testo laikas: " << std::setprecision(6) << timeTaken << endl;   
+
+        //duomenys str1, str2;
+        //str1.setVardas("Hubertas");
+        //str1.setPavarde("KL");
+        //duomenys str3 = str1;
+        //str2 = str1;
+
+        //cout << str1.vardas() <<endl; // what is printed ?
+        //cout << str2.vardas() << endl;
+
+        //str2.setVardas("KLAN");
+
+        //cout << str1.vardas() << endl; // what is printed now?
+        //cout << str2.vardas() << endl;
     }
     return 0;
 }

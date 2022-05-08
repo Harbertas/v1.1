@@ -63,6 +63,33 @@ double duomenys::mediana(duomenys& temp){
     return rez;
 }
 
+duomenys::~duomenys() {
+    paz_.clear();
+}
+duomenys::duomenys(const duomenys& old_duom) {
+    //cout << "Copy constructor called " << endl;
+    vardas_ = old_duom.vardas_;
+    pavarde_ = old_duom.pavarde_;
+    paz_ = old_duom.paz_;
+    egz_ = old_duom.egz_;
+    kiekPaz_ = old_duom.kiekPaz_;
+    rezult_ = old_duom.rezult_;
+}
+
+duomenys& duomenys::operator=(const duomenys& other) { // assignment operator
+    //cout << "Assignment operator called " << endl;
+    paz_.clear();
+    if (this != &other) { // protect against invalid self-assignment
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        paz_ = other.paz_;
+        egz_ = other.egz_;
+        kiekPaz_ = other.kiekPaz_;
+        rezult_ = other.rezult_;
+    }
+    return *this;
+}
+
 duomenys::duomenys(std::ifstream& df){
     vector<duomenys> sarasas;
     double timeTaken;
@@ -94,9 +121,9 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
     int KiekTarpu = 0;
     for(auto &el : splited)
     {
-        for(int i = 0; i < el.length(); i++)
+        for(int i = 0; i < (int)el.length(); i++)
         {
-            if(i != el.length()-1){
+            if(i != (int)el.length()-1){
                 //cout << "symb " << el.at(i) << " symb+1 " << el.at(i+1) << endl;
                 if((el.at(i) == ' ') && (el.at(i+1) != ' ')){
                     KiekTarpu++;
@@ -107,6 +134,7 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
     }
     stringstream ss;
 
+    duomenys tempTemp;
     duomenys temp;
 
     int pazymys, kiek = 1, kiekPazymiu = KiekTarpu-2;
@@ -126,27 +154,32 @@ std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas
         {
             ss.clear();
             ss.str("");
+            tempTemp = temp;
             ss << eilute;
             ss >> vardas >> pavarde;
-            temp.setVardas(vardas);
-            temp.setPavarde(pavarde);
+            tempTemp.setVardas(vardas);
+            tempTemp.setPavarde(pavarde);
             //cout << tempTemp.vardas << " " << tempTemp.pavarde << endl;
             for(int i = 0; i < kiekPazymiu; i++)
             {
                 ss >> pazymys;
-                temp.setPaz(pazymys);
-
+                tempTemp.setPaz(pazymys);
             }
-            temp.setKiekPaz(kiekPazymiu);
+            tempTemp.setKiekPaz(kiekPazymiu);
             ss >> pazymys;
-            temp.setEgz(pazymys);
-            temp.setRezult(temp.skaiciuoti(temp));
-            sarasas.push_back(temp);
+            tempTemp.setEgz(pazymys);
+            double paz;
+            paz = tempTemp.skaiciuoti(tempTemp);
+            tempTemp.setRezult(paz);
+            sarasas.push_back(tempTemp);
         }
             ss.str("");
             ss.clear();
-            temp.paz_.clear();
         }
+    //auto end = std::chrono::high_resolution_clock::now();
+    //std::chrono::duration<double> diff = end-start; // Skirtumas (s)
+    //std::cout << fileLength << " eiluciu failo nuskaitymas tiesiai į eilučių vektorių užtruko: "<< diff.count() << " s\n";
+    //timeTaken += diff.count();
         return df;
 }
 
@@ -201,12 +234,12 @@ void rikiavimas(vector<duomenys>& sarasas, int fileLength, double &timeTaken){
     string rusiuoti = "3";
     //cout << "Pagal ka norite rusiuoti? (nieko nerusiuoti - 0, varda - 1, pavarde - 2, galutini pazymi - 3)" << endl;
     //cin >> rusiuoti;
-    while((rusiuoti != "1" && rusiuoti != "2" && rusiuoti != "3" && rusiuoti != "0") || onlyLetters(rusiuoti) == true){ //|| rusiuoti != 1 || rusiuoti != 2 || rusiuoti != 3
-        cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
-        cin.clear();
-        cin.ignore(256,'\n');
-        cin >> rusiuoti;
-    }
+    //while((rusiuoti != "1" && rusiuoti != "2" && rusiuoti != "3" && rusiuoti != "0") || onlyLetters(rusiuoti) == true){ //|| rusiuoti != 1 || rusiuoti != 2 || rusiuoti != 3
+    //    cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
+    //    cin.clear();
+    //    cin.ignore(256,'\n');
+    //    cin >> rusiuoti;
+    //}
     auto start = std::chrono::high_resolution_clock::now();
 
 //    if(rusiuoti == "1")
@@ -232,17 +265,17 @@ void rikiavimas(vector<duomenys>& sarasas, int fileLength, double &timeTaken){
     timeTaken += diff.count();
 }
 
-int generateFileName(string &generatedFileName, int &pazymiuKiekis){
+int generateFileName(string& generatedFileName, int& pazymiuKiekis) {
     int fileLength;
     generatedFileName = "kursiokai";
     cout << "Kokio ilgio faila generuoti?" << endl;
     cin >> fileLength;
-    while(cin.fail()){
+    /*while(cin.fail()){
         cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
         cin.clear();
         cin.ignore(256,'\n');
         cin >> fileLength;
-    }
+    }*/
     generatedFileName += to_string(fileLength) + ".txt";
     //cout << fileLength << endl;
     //cout << generatedFileName << endl;
@@ -250,12 +283,12 @@ int generateFileName(string &generatedFileName, int &pazymiuKiekis){
     cout << "Iveskite kiek pazymiu tures studentai?" << endl;
     cin >> pazymiuKiekis;
     cout << endl;
-    while(cin.fail()){
+    /*while(cin.fail()){
         cout << "Ivedete netinkamus duomenis, bandykite dar karta!" << endl;
         cin.clear();
         cin.ignore(256,'\n');
         cin >> pazymiuKiekis;
-    }
+    }*/
 
     return fileLength;
 }
@@ -318,29 +351,30 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
     cout << "Failas: " << generatedFileName << " sekmingai sukurtas!" << endl;
 }
 
-void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int fileLength, double &timeTaken){
+void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int& fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 
-//   vector<duomenys>::iterator it;
-//   for(it = sarasas.begin(); it != sarasas.end(); ++it){
-//       if(it->rezult() >= 5){
-//           break;
-//       }
-//   }
-//   std::copy(it, sarasas.end(), back_inserter(sarasas2));
-//   //sarasas.erase(it, sarasas.end());
-//   //cout << sarasas.size()-sarasas2.size() << endl;
-//   sarasas.resize(sarasas.size()-sarasas2.size());
+   //vector<duomenys>::iterator it;
+   //for(it = sarasas.begin(); it != sarasas.end(); ++it){
+   //    if(it->rezult() >= 5){
+   //        break;
+   //    }
+   //}
+   //std::copy(it, sarasas.end(), back_inserter(sarasas2));
+   ////sarasas.erase(it, sarasas.end());
+   ////cout << sarasas.size()-sarasas2.size() << endl;
+   //sarasas.reserve(sarasas.size()-sarasas2.size());
 
-    vector<duomenys>::reverse_iterator it;
-    for(it = sarasas.rbegin(); it != sarasas.rend(); ++it){
-        if(it->rezult() >= 5){
-            sarasas2.push_back(*it);
+    //vector<duomenys>::iterator it = sarasas.end(); it--;
+    for(auto it = sarasas.size(); it > 0; --it){
+        //cout << sarasas.at(it).pavarde() << endl;
+        if(sarasas.at(it-1).rezult() >= 5){
+            sarasas2.push_back(sarasas.at(it-1));
             sarasas.pop_back();
         }
         if(sarasas2.size() % (fileLength / 10) == 0){
             sarasas2.shrink_to_fit();
-            //Neveikia!
+            //neveikia!
             //sarasas.shrink_to_fit();
         }
     }

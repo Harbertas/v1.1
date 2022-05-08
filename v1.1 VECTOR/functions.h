@@ -47,15 +47,18 @@ class duomenys{
         inline int kiekPaz() const { return kiekPaz_; }  // get'eriai, inline
         double skaiciuoti(duomenys&);  // get'eriai
         double mediana(duomenys&);  // get'eriai
-        int getPaz(int &i){return paz_.at(i);}  // get'eriai
+        int getPaz(int &i) const {return paz_.at(i);}  // get'eriai
 
         std::istream& readStudent(std::ifstream&, vector<duomenys>&, double&);  // set'eriai
-        void setVardas(string& v){vardas_ = v;}
-        void setPavarde(string& p){pavarde_ = p;}
-        void setPaz(int& p){paz_.push_back(p);}
-        void setKiekPaz(int& kiek){kiekPaz_ = kiek;}
+        void setVardas(string v){vardas_ = v;}
+        void setPavarde(string p){pavarde_ = p;}
+        void setPaz(int p){paz_.push_back(p);}
+        void setKiekPaz(int kiek){kiekPaz_ = kiek;}
         void setRezult(double rez){rezult_ = rez;}
-        void setEgz(int& egz){egz_ = egz;}
+        void setEgz(int egz){egz_ = egz;}
+        ~duomenys(); // destructor
+        duomenys(const duomenys&); // copy constructor
+        duomenys& operator=(const duomenys&); // assignment operator
 };
 
 //void isvedimas(duomenys&);
@@ -67,5 +70,5 @@ void rikiavimas(vector<duomenys>&, int, double&);
 void spausdinti(vector<duomenys>&, vector<duomenys>&, int/*, double&*/);
 int generateFileName(string&, int&);
 void generateFileData(string, int, int, double&);
-void atskirti(vector<duomenys>&, vector<duomenys>&, int, double&);
+void atskirti(vector<duomenys>&, vector<duomenys>&, int&, double&);
 #endif
