@@ -48,7 +48,7 @@ class duomenys : public zmogus{
         double rezult_ = 0;
     public:
         duomenys(vector<int> paz_ = { 0 }, int egz_ = 0, int kiekPaz_ = 0, double rezult_ = 0, string var = "", string pav = "") : zmogus{var, pav} {}
-        duomenys(std::ifstream& df);
+        friend std::ostream& operator << (std::ostream& out, duomenys& d);
 
         inline double rezult() const { return rezult_; }  // get'eriai, inline
         inline int egz() const { return egz_; }  // get'eriai, inline

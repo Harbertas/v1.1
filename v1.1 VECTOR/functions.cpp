@@ -30,6 +30,7 @@ bool compare_vardas(const duomenys &a, const duomenys &b){
     return a.vardas() < b.vardas();
 }
 
+
 double duomenys::skaiciuoti(duomenys& temp){
     double vidurkis = 0;
     int suma = 0;
@@ -89,11 +90,8 @@ duomenys& duomenys::operator=(const duomenys& other) { // assignment operator
     }
     return *this;
 }
-
-duomenys::duomenys(std::ifstream& df){
-    vector<duomenys> sarasas;
-    double timeTaken;
-    readStudent(df, sarasas, timeTaken);
+std::ostream& operator << (std::ostream& out, duomenys& d) {
+    out << std::left << std::setw(15) << d.pavarde() << std::left << std::setw(15) << d.vardas() << std::left << std::setw(19) << std::fixed << std::setprecision(2) << d.rezult() << std::fixed << std::setprecision(2) << d.mediana(d) << endl;
 }
 
 std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas, double& timeTaken){
@@ -198,7 +196,7 @@ void spausdinti(vector<duomenys> &sarasas, vector<duomenys> &sarasas2, int fileL
     my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
     my_buffer << "-------------------------------------------------------------------" << endl;
     for(auto &el : sarasas2){
-        my_buffer << std::left << std::setw(15) << el.pavarde() << std::left << std::setw(15) << el.vardas() << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult() << std::fixed << std::setprecision(2) << el.mediana(el) << endl;
+        my_buffer << el;
     }
     rf << my_buffer.str();
     my_buffer.str("");
@@ -217,7 +215,7 @@ void spausdinti(vector<duomenys> &sarasas, vector<duomenys> &sarasas2, int fileL
     my_buffer << std::left << std::setw(15) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(17) << "Galutinis (Vid.) " << "/ Galutinis (Med.)" << endl;
     my_buffer << "-------------------------------------------------------------------" << endl;
     for(auto &el : sarasas){
-        my_buffer << std::left << std::setw(15) << el.pavarde() << std::left << std::setw(15) << el.vardas() << std::left << std::setw(19) << std::fixed << std::setprecision(2) << el.rezult() << std::fixed << std::setprecision(2) << el.mediana(el) << endl;
+        my_buffer << el;
     }
     rf2 << my_buffer.str();
     my_buffer.str("");
