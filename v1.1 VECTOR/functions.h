@@ -28,7 +28,7 @@ using std::list;
 using std::deque;
 using std::stringstream;
 using std::to_string;
-
+/**Class to save data about human */
 class zmogus {
     protected:
         string vardas_, pavarde_;
@@ -39,7 +39,7 @@ class zmogus {
         virtual void setPavarde(string p) = 0;
         zmogus(string var = "", string pav = "") : vardas_{var}, pavarde_{pav}{}
 };
-
+/**Class to save data about student and inherit data from human class */
 class duomenys : public zmogus{
     private:
         vector<int> paz_;

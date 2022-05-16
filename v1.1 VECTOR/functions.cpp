@@ -1,5 +1,6 @@
 #include "functions.h"
 
+/**Function to validate whether given string contains only letters*/
 bool onlyLetters(string name){
     for(auto i : name){
         if(isdigit(i) == true){
@@ -9,6 +10,7 @@ bool onlyLetters(string name){
     return true;
 }
 
+/**Function to compare student data based on surname*/
 bool compare_pavarde(const duomenys &a, const duomenys &b){
     if(a.pavarde() == b.pavarde()){
         return a.vardas() < b.vardas();
@@ -16,6 +18,7 @@ bool compare_pavarde(const duomenys &a, const duomenys &b){
     return a.pavarde() < b.pavarde();
 }
 
+/**Function to compare student data based on final result*/
 bool compare_g_paz(const duomenys &a, const duomenys &b){
     if(a.rezult() == b.rezult()){
         return a.pavarde() < b.pavarde();
@@ -23,6 +26,7 @@ bool compare_g_paz(const duomenys &a, const duomenys &b){
     return a.rezult() < b.rezult();
 }
 
+/**Function to compare student data based on name*/
 bool compare_vardas(const duomenys &a, const duomenys &b){
     if(a.vardas() == b.vardas()){
         return a.pavarde() < b.pavarde();
@@ -30,7 +34,7 @@ bool compare_vardas(const duomenys &a, const duomenys &b){
     return a.vardas() < b.vardas();
 }
 
-
+/**Method to calculate student final mark (average)*/
 double duomenys::skaiciuoti(duomenys& temp){
     double vidurkis = 0;
     int suma = 0;
@@ -45,6 +49,7 @@ double duomenys::skaiciuoti(duomenys& temp){
     return temp.rezult_;
 }
 
+/**Method to calculate student final mark (median)*/
 double duomenys::mediana(duomenys& temp){
     double rez = 0;
     int index = temp.kiekPaz()/2;
@@ -64,9 +69,12 @@ double duomenys::mediana(duomenys& temp){
     return rez;
 }
 
+/**DESTRUCTOR*/
 duomenys::~duomenys() {
     paz_.clear();
 }
+
+/**Copy constructor*/
 duomenys::duomenys(const duomenys& old_duom) {
     //cout << "Copy constructor called " << endl;
     zmogus::vardas_ = old_duom.vardas_;
@@ -77,6 +85,7 @@ duomenys::duomenys(const duomenys& old_duom) {
     rezult_ = old_duom.rezult_;
 }
 
+/**Assignment operator overload*/
 duomenys& duomenys::operator=(const duomenys& other) { // assignment operator
     //cout << "Assignment operator called " << endl;
     paz_.clear();
@@ -90,10 +99,13 @@ duomenys& duomenys::operator=(const duomenys& other) { // assignment operator
     }
     return *this;
 }
+
+/**Overloading << operator*/
 std::ostream& operator << (std::ostream& out, duomenys& d) {
     out << std::left << std::setw(15) << d.pavarde() << std::left << std::setw(15) << d.vardas() << std::left << std::setw(19) << std::fixed << std::setprecision(2) << d.rezult() << std::fixed << std::setprecision(2) << d.mediana(d) << endl;
 }
 
+/**Method to read data from a file*/
 std::istream& duomenys::readStudent(std::ifstream& df, vector<duomenys> &sarasas, double& timeTaken){
     std::vector<std::string> splited;
     std::string eil;
@@ -185,6 +197,7 @@ void isvedimas(duomenys &temp){
     cout << std::left << std::setw(15) << temp.pavarde() << std::left << std::setw(15) << temp.vardas() << std::left << std::setw(19) << std::fixed << std::setprecision(2) << temp.rezult() << std::fixed << std::setprecision(2) << temp.mediana(temp) << endl;
 }
 
+/**Function to print all the gathered data*/
 void spausdinti(vector<duomenys> &sarasas, vector<duomenys> &sarasas2, int fileLength/*, double &timeTaken*/){
     auto start = std::chrono::high_resolution_clock::now();
     start = std::chrono::high_resolution_clock::now();
@@ -263,6 +276,7 @@ void rikiavimas(vector<duomenys>& sarasas, int fileLength, double &timeTaken){
     timeTaken += diff.count();
 }
 
+/**Function to generate a file name*/
 int generateFileName(string& generatedFileName, int& pazymiuKiekis) {
     int fileLength;
     generatedFileName = "kursiokai";
@@ -291,6 +305,7 @@ int generateFileName(string& generatedFileName, int& pazymiuKiekis) {
     return fileLength;
 }
 
+/**Function to generate file data*/
 void generateFileData(string generatedFileName, int fileLength, int pazymiuKiekis, double & timeTaken){
     vector<string> vardas = {"Petras", "Antanas", "Jonas", "Tomas", "Valdas", "Romas", "Lukas", "Matas", "Virgis", "Mantas", "Kazys"};
     string generatedName;
@@ -349,6 +364,7 @@ void generateFileData(string generatedFileName, int fileLength, int pazymiuKieki
     cout << "Failas: " << generatedFileName << " sekmingai sukurtas!" << endl;
 }
 
+/**Function to split all the students to above 5 and below 5 final mark*/
 void atskirti(vector<duomenys>& sarasas, vector<duomenys>& sarasas2, int& fileLength, double &timeTaken){
     auto start = std::chrono::high_resolution_clock::now();
 

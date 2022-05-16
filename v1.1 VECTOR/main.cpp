@@ -82,6 +82,7 @@ int main()
         //cout << str1.vardas() << endl; // what is printed now?
         //cout << str2.vardas() << endl;
         //duomenys zmog;
+        system("pause");
     }
     return 0;
 }
