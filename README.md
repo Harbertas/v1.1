@@ -1,3 +1,7 @@
+# V2.0 programos versija
+1. Sukurta dokumentacija naudojant doxygen.
+2. Sukurtas SETUP failas.
+3. Panaudoti google tests.
 # V1.5 programos versija
 1. Pridėta abstrakti klasė 'zmogus'.
 2. Klasė 'duomenys' paveldi klasę 'zmogus'.
