@@ -8,11 +8,11 @@
 //}
 
 TEST(TestCaseName1, CheckAssignmentAndResult) {
-	duomenys pirmas({10, 5, 10}, 5, 3, 5, "jonas", "jonaitis");
+	duomenys pirmas({10, 5, 10}, 5, 3, 5, "jonas");
 	duomenys antras = pirmas;
+	duomenys trecias;
 	ASSERT_EQ(pirmas.egz(), antras.egz());
 }
-
 TEST(TestCaseName2, CheckNames) {
 	duomenys pirmas, antras;
 	pirmas.setVardas("Pilypas");
