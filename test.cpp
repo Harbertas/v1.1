@@ -7,7 +7,7 @@
 //  EXPECT_TRUE(true);
 //}
 
-TEST(TestCaseName1, CheckAssignemntAndResult) {
+TEST(TestCaseName1, CheckAssignmentAndResult) {
 	duomenys pirmas({10, 5, 10}, 5, 3, 5, "jonas", "jonaitis");
 	duomenys antras = pirmas;
 	ASSERT_EQ(pirmas.egz(), antras.egz());
