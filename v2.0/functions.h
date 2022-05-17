@@ -47,7 +47,23 @@ class duomenys : public zmogus{
         int kiekPaz_ = 0;
         double rezult_ = 0;
     public:
-        duomenys(vector<int> paz_ = { 0 }, int egz_ = 0, int kiekPaz_ = 0, double rezult_ = 0, string var = "", string pav = "") : zmogus{var, pav} {}
+        duomenys(vector<int> paz_, int egz_, int kiekPaz_, double rezult_, string vardas_, string pavarde_) : zmogus{ vardas_, pavarde_ } {
+            this->paz_ = paz_;
+            this->egz_ = egz_;
+            this->kiekPaz_ = kiekPaz_;
+            this->rezult_ = rezult_;
+            this->rezult_ = rezult_;
+            this->vardas_ = vardas_;
+            this->pavarde_ = pavarde_;
+        }
+        duomenys() {
+            paz_= {};
+            egz_ = 0;
+            kiekPaz_ = 0;
+            rezult_ = 0;
+            zmogus::vardas_ = "";
+            zmogus::pavarde_ = "";
+        }
         friend std::ostream& operator << (std::ostream& out, duomenys& d);
 
         inline double rezult() const { return rezult_; }  // get'eriai, inline
@@ -58,7 +74,7 @@ class duomenys : public zmogus{
         int getPaz(int &i) const {return paz_.at(i);}  // get'eriai
 
         std::istream& readStudent(std::ifstream&, vector<duomenys>&, double&);  // set'eriai
-        void setPaz(int p){paz_.push_back(p);}
+        void setPaz(int p){paz_.push_back(p), kiekPaz_ = paz_.size();}
         void setKiekPaz(int kiek){kiekPaz_ = kiek;}
         void setRezult(double rez){rezult_ = rez;}
         void setEgz(int egz){egz_ = egz;}
