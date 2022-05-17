@@ -7,20 +7,17 @@
 //  EXPECT_TRUE(true);
 //}
 
-TEST(TestCaseName1, CheckAssignmentAndResult) {
-	duomenys pirmas({10, 5, 10}, 5, 3, 5, "jonas");
-	duomenys antras = pirmas;
-	duomenys trecias;
+TEST(TestCaseName1, checkConstructor) {
+	duomenys pirmas({0,0,0},3,4,6,"jonas","jonaitis");
+	ASSERT_EQ(pirmas.vardas(), "jonas");
+}
+TEST(TestCaseName2, CheckSetterAndAssignment) {
+	duomenys pirmas, antras;
+	pirmas.setEgz(3);
+	antras = pirmas;
 	ASSERT_EQ(pirmas.egz(), antras.egz());
 }
-TEST(TestCaseName2, CheckNames) {
-	duomenys pirmas, antras;
-	pirmas.setVardas("Pilypas");
-	antras.setVardas(pirmas.vardas());
-	ASSERT_EQ(pirmas.vardas(), antras.vardas());
-}
-
-TEST(TestCaseName3, CheckMarks) {
+TEST(TestCaseName3, CheckMarksQuantity) {
 	duomenys pirmas;
 	pirmas.setPaz(3);
 	pirmas.setPaz(4);
